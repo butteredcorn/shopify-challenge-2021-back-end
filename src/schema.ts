@@ -50,15 +50,15 @@ const typeDefs = gql`
     }
 
     type Query {
-        movieByTitle(title: String!) : MovieResponse 
+        movieByID(id: String!) : MovieResponse 
         searchByTitle(title: String!) : SearchResponse
     }
 `
 
 const resolvers: IResolvers = {
     Query: {
-        movieByTitle(_, {title}, {dataSources}) {
-            return dataSources.omdbAPI.withTitle(title)
+        movieByID(_, {id}, {dataSources}) {
+            return dataSources.omdbAPI.withID(id)
         },
         searchByTitle(_, {title}, {dataSources}) {
             return dataSources.omdbAPI.searchWithTitle(title)

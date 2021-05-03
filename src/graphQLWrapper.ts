@@ -16,9 +16,9 @@ export class OMDbAPI extends RESTDataSource {
         request.params.set('apikey', API_KEY)
     }
 
-    async withTitle(title: string) {
+    async withID(id: string) {
         //params: route, ?queryParam name
-        const data = await this.get( '/', {t: title})
+        const data = await this.get( '/', {i: id})
         console.log(data)
         return data
     }
