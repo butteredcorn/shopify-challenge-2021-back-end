@@ -32,11 +32,26 @@ const typeDefs = gql`
         BoxOffice: String
         Production: String
         Website: String
-        Response: Boolean
+        Response: String
+    }
+
+    type Result {
+        Title: String
+        Year: Int
+        imdbID: String!
+        Type: String
+        Poster: String
+    }
+
+    type SearchResponse {
+        Search: [Result]
+        totalResults: Int
+        Response: String
     }
 
     type Query {
         movieByTitle(title: String!) : MovieResponse 
+        searchByTitle(title: String!) : SearchResponse
     }
 `
 
@@ -44,7 +59,10 @@ const resolvers: IResolvers = {
     Query: {
         movieByTitle(_, {title}, {dataSources}) {
             return dataSources.omdbAPI.withTitle(title)
-        } 
+        },
+        searchByTitle(_, {title}, {dataSources}) {
+            return dataSources.omdbAPI.searchWithTitle(title)
+        }
     }
 }
 

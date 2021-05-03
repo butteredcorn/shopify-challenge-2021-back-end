@@ -23,6 +23,12 @@ export class OMDbAPI extends RESTDataSource {
         return data
     }
 
+    async searchWithTitle(title: string) {
+        const data = await this.get('/', {s: title})
+        console.log(data)
+        return data
+    }
+
 }
 
 export const dataSources = () => ({ omdbAPI: new OMDbAPI() })
