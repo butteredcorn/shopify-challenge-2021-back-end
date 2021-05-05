@@ -9,7 +9,7 @@ const typeDefs = gql`
 
     type MovieResponse {
         Title: String
-        Year: Int
+        Year: String
         Rated: String
         Released: String
         Runtime: String
@@ -37,7 +37,7 @@ const typeDefs = gql`
 
     type Result {
         Title: String
-        Year: Int
+        Year: String
         imdbID: String!
         Type: String
         Poster: String
