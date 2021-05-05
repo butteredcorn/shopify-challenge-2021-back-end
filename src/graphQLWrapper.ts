@@ -20,12 +20,14 @@ export class OMDbAPI extends RESTDataSource {
         //params: route, ?queryParam name
         const data = await this.get( '/', {i: id})
         console.log(data)
+        if (data.Error) throw new Error(data.Error)
         return data
     }
 
     async searchWithTitle(title: string) {
         const data = await this.get('/', {s: title})
         console.log(data)
+        if (data.Error) throw new Error(data.Error)
         return data
     }
 

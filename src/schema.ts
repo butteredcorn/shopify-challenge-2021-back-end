@@ -1,5 +1,7 @@
 import { gql, IResolvers, makeExecutableSchema } from 'apollo-server'
-
+/**
+ * Note: Year can be 2014-2015 and Metascore can be 'N/A', thus Int will fail in those cases
+ */
 const typeDefs = gql`
 
     type Rating {
@@ -23,8 +25,8 @@ const typeDefs = gql`
         Awards: String,
         Poster: String
         Ratings: [Rating]
-        Metascore: Int
-        imdbRating: Float
+        Metascore: String
+        imdbRating: String
         imdbVotes: String
         imdbID: String!
         Type: String
