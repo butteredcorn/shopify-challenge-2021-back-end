@@ -4,6 +4,6 @@ import { dataSources } from './graphQLWrapper'
 
 const server = new ApolloServer({ schema, dataSources })
 
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.PORT }).then(({ url }) => {
   console.log(`Server running at ${url}`)
 })
